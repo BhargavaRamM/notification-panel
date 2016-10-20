@@ -1,0 +1,29 @@
+{
+  "type": "panel",
+  "name": "Notification",
+  "id": "grafana-notification-panel",
+
+  "info": {
+    "description": "Notification panel for grafana",
+    "author": {
+      "name": "NEC labs",
+      "url": "http://nec.com"
+    },
+    "keywords": ["notification", "panel"],
+    "logos": {
+      "small": "src/img/fav16.png",
+      "large": "src/img/fav32.png"
+    },
+    "links": [
+      {"name": "Project site", "url": "https://github.com/grafana/notification-panel"},
+      {"name": "MIT License", "url": "https://github.com/grafana/notification-panel/blob/master/LICENSE"}
+    ],
+    "version": "0.0.0",
+    "updated": "2016-18-10"
+  },
+
+  "dependencies": {
+    "grafanaVersion": "3.x.x",
+    "plugins": [ ]
+  }
+}
