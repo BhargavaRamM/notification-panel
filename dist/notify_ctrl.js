@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['app/plugins/sdk', 'lodash', 'moment'], function (_export, _context) {
+System.register(['app/plugins/sdk', 'lodash', 'moment', 'jquery', 'angular', './external/notify.min', './external/notify'], function (_export, _context) {
 			"use strict";
 
-			var PanelCtrl, _, moment, _createClass, NotifyCtrl;
+			var PanelCtrl, _, moment, $, angular, Notify, _createClass, NotifyCtrl;
 
 			function _classCallCheck(instance, Constructor) {
 						if (!(instance instanceof Constructor)) {
@@ -42,7 +42,13 @@ System.register(['app/plugins/sdk', 'lodash', 'moment'], function (_export, _con
 									_ = _lodash.default;
 						}, function (_moment) {
 									moment = _moment.default;
-						}],
+						}, function (_jquery) {
+									$ = _jquery.default;
+						}, function (_angular) {
+									angular = _angular.default;
+						}, function (_externalNotifyMin) {
+									Notify = _externalNotifyMin;
+						}, function (_externalNotify) {}],
 						execute: function () {
 									_createClass = function () {
 												function defineProperties(target, props) {
@@ -76,15 +82,23 @@ System.register(['app/plugins/sdk', 'lodash', 'moment'], function (_export, _con
 															_this.events.on('init-edit-mode', _this.onInitEditMode.bind(_this));
 															_this.events.on('refresh', _this.onRefresh.bind(_this));
 															_this.events.on('render', _this.onRender.bind(_this));
-															//this.updateNotification();
+															//this.events.on('data-received',this.onDataReceived.bind(this));
+															//this.events.on('data-error',this.onDataError.bind(this));
+															console.log("Notification Panel constructor done...");
+															//this.renderNotification();
 															return _this;
 												}
 
 												_createClass(NotifyCtrl, [{
 															key: 'onInitEditMode',
 															value: function onInitEditMode() {
-																		this.addEditorTab('Options', 'editor.html');
-																		this.editorTabIndex = 1;
+																		this.addEditorTab('Options', 'public/plugins/grafana-clock-panel/editor.html', 2);
+																		//this.editorTabIndex = 1;
+															}
+												}, {
+															key: 'setContainer',
+															value: function setContainer(container) {
+																		this.panelContainer = container;
 															}
 												}, {
 															key: 'onRefresh',
@@ -105,7 +119,7 @@ System.register(['app/plugins/sdk', 'lodash', 'moment'], function (_export, _con
 																		var _this2 = this;
 
 																		this.time = moment().format('hh:mm:ss');
-																		this.note = notification.notify('success', 'Settings successfully saved.', this.time);
+																		this.note = $.notify('success', 'Settings successfully saved.', this.time);
 																		this.$timeout(function () {
 																					_this2.renderNotification();
 																		}, 1000);

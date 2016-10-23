@@ -1,1 +1,7 @@
-<h2>{{ctrl.note}}</h2>
+<div class="notification-panel" ng-style="{height: ctrl.height}">
+  <span ng-if="ctrl.panel.dateSettings.showDate && ctrl.panel.mode === 'notification'"
+    <h6 style="font-size: {{ctrl.panel.dateSettings.fontSize}}; font-weight: {{ctrl.panel.dateSettings.fontWeight}};">{{ctrl.date}}</h6>
+  </span>
+  <h5 style="font-size: {{ctrl.panel.timeSettings.fontSize}}; font-weight: {{ctrl.panel.timeSettings.fontWeight}};">{{ctrl.time}}</h5>
+  <h2>Notification: {{ctrl.note}}</h2>
+</div>

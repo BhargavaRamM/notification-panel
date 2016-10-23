@@ -1,18 +1,20 @@
 {
   "name": "notification-panel",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Notification Panel for Grafana",
-  "main": "module.js",
+  "main": "src/module.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/BhargavaRamM/notification-panel.git"
+    "url": "git+https://github.com/BhargavaRamM/notification-panel.git"
   },
   "keywords": [
     "notification",
-    "panel"
+    "panel",
+    "plugin",
+    "grafana"
   ],
   "author": "BhargavaRamM",
   "license": "MIT",
@@ -24,6 +26,9 @@
     "babel": "^6.5.2",
     "babel-plugin-transform-es2015-modules-systemjs": "^6.14.0",
     "babel-preset-es2015": "^6.16.0",
+    "babel-preset-es2016": "^6.16.0",
+    "eslint": "^3.8.1",
+    "eslint-plugin-import": "^2.0.1",
     "grunt": "^1.0.1",
     "grunt-babel": "^6.0.0",
     "grunt-contrib-clean": "^1.0.0",
@@ -32,11 +37,28 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-execute": "^0.2.2",
     "grunt-systemjs-builder": "^0.2.7",
+    "jspm": "^0.16.46",
     "load-grunt-tasks": "^3.5.2"
   },
   "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-notification": "^0.2.0",
     "lodash": "^4.16.4",
     "moment": "^2.15.1",
-    "notifyjs": "^2.0.3"
+    "notifyjs": "^2.0.3",
+    "noty": "^2.3.8",
+    "push.js": "0.0.11",
+    "rendering": "^1.0.2"
+  },
+  "jspm": {
+    "dependencies": {
+      "jquery": "npm:jquery@^3.1.1",
+      "lodash-node": "npm:lodash-node@^3.10.2"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }

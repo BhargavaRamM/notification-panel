@@ -1,6 +1,10 @@
 import {PanelCtrl} from 'app/plugins/sdk';
 import _ from 'lodash';
 import moment from 'moment';
+import $ from 'jquery';
+import angular from 'angular';
+import * as Notify from './external/notify.min';
+import './external/notify';
 
 
 
@@ -14,14 +18,21 @@ export class NotifyCtrl extends PanelCtrl {
 	this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
 	this.events.on('refresh', this.onRefresh.bind(this));
 	this.events.on('render', this.onRender.bind(this));
-	//this.updateNotification();
+	//this.events.on('data-received',this.onDataReceived.bind(this));
+	//this.events.on('data-error',this.onDataError.bind(this));
+	console.log("Notification Panel constructor done...");
+	//this.renderNotification();
     }
 
     onInitEditMode() {
-	this.addEditorTab('Options','editor.html');
-	this.editorTabIndex = 1;
-    }
+	this.addEditorTab('Options','public/plugins/grafana-clock-panel/editor.html',2);
+	//this.editorTabIndex = 1;
+	}
 
+	setContainer(container) {
+		this.panelContainer = container;
+	}
+	
     onRefresh() {
 	this.render();
     }
@@ -35,7 +46,7 @@ export class NotifyCtrl extends PanelCtrl {
     
     renderNotification() {
 	this.time = moment().format('hh:mm:ss');
-	this.note = notification.notify( 'success', 'Settings successfully saved.',this.time );
+	this.note = $.notify( 'success', 'Settings successfully saved.',this.time );
 	this.$timeout(() => { this.renderNotification();},1000);
     }
 } 
